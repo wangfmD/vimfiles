@@ -54,7 +54,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'terryma/vim-expand-region'
 " 多光标选中编辑
 
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 " 文件搜索
 Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
 Plug 'dyng/ctrlsf.vim'
@@ -68,8 +68,9 @@ Plug 'airblade/vim-gitgutter'
 " edit history, 可以查看回到某个历史状态
 Plug 'sjl/gundo.vim'
 " 状态栏增强展示
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 " 括号显示增强
 Plug 'kien/rainbow_parentheses.vim'
 " 主题 solarized molokai solarized peaksea
@@ -79,6 +80,7 @@ Plug 'vim-scripts/peaksea'
 Plug 'scrooloose/nerdtree' | Plug 'jistr/vim-nerdtree-tabs'
 Plug 'szw/vim-ctrlspace'
 Plug 'majutsushi/tagbar'
+" text object
 " 支持自定义文本对象
 Plug 'kana/vim-textobj-user'
 " 增加行文本对象: l   dal yal cil
@@ -97,7 +99,6 @@ if count(g:bundle_groups, 'markdown')
     " let g:instant_markdown_autostart = 0
     " map <F12> :InstantMarkdownPreview<CR>
 endif
-
 
 if count(g:bundle_groups, 'python')
     " for python.vim syntax highlight
@@ -168,7 +169,8 @@ let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> ,z :Goyo<cr>
-
+"" for lightline
+set cmdheight=2
 " syntastic {{{
     let g:syntastic_error_symbol='>>'
     let g:syntastic_warning_symbol='>'
@@ -480,12 +482,12 @@ map <leader>p :cp<cr>
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
     endif
-    let g:airline_left_sep = '▶'
-    let g:airline_left_alt_sep = '❯'
-    let g:airline_right_sep = '◀'
-    let g:airline_right_alt_sep = '❮'
-    let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.branch = '⎇'
+    " let g:airline_left_sep = '▶'
+    " let g:airline_left_alt_sep = '❯'
+    " let g:airline_right_sep = '◀'
+    " let g:airline_right_alt_sep = '❮'
+    " let g:airline_symbols.linenr = '¶'
+    " let g:airline_symbols.branch = '⎇'
     " 是否打开tabline
     " let g:airline#extensions#tabline#enabled = 1
 " }}}

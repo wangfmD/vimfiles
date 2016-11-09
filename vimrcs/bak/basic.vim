@@ -430,7 +430,4 @@ endfunction
 " if has("autocmd")
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "endif
-source ~\vimfiles\vimrcs\bak\filetypes.vim
-source ~\vimfiles\vimrcs\bak\plugins_config.vim
-source ~\vimfiles\vimrcs\bak\extended.vim
-"source ~\vimfiles\vimrcs\bak\my_config.vim
+

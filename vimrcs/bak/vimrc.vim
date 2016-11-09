@@ -229,7 +229,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-"
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
@@ -431,7 +431,4 @@ endfunction
 "   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "endif
 
-source ~\vimfiles\vimrcs\bak\filetypes.vim
-source ~\vimfiles\vimrcs\bak\plugins_config.vim
-source ~\vimfiles\vimrcs\bak\extended.vim
-"source ~\vimfiles\vimrcs\bak\my_config.vim
+
