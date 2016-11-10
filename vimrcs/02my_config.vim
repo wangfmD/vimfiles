@@ -307,3 +307,4 @@ nnoremap <silent> <Leader>z :ZoomToggle<CR>
 """""""""""""""""""""""""""""""""""""
 "end
 """""""""""""""""""""""""""""""""""""
+set guioptions-=e
