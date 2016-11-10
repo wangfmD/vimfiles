@@ -13,6 +13,8 @@ map <Leader>eg4 :e G:\04py<cr>
 nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current file path is completed!"<cr>
 nmap <C-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap ll <Esc>
+inoremap \` <Esc>
+inoremap kj <Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
@@ -27,7 +29,7 @@ noremap <c-cr> <esc>o<esc>
 noremap $j <esc>o<esc>
 noremap $k <esc>O<esc>
 noremap <s-cr> <esc>O<esc>
-noremap <leader>e <esc>:e
+noremap <leader>e <esc>:e 
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
@@ -186,8 +188,6 @@ map Y "+y$
 vnoremap <leader>y "+y
 " select block
 nnoremap <leader>v V`}
-" kj 替换 Esc
-inoremap kj <Esc>
 " 滚动Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>

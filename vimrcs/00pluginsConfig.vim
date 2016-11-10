@@ -20,6 +20,14 @@ if !exists('g:bundle_groups')
 endif
 " ----------------------------------------------------------------------------
 " 使用 vim-plug 管理插件
+" https://github.com/junegunn/vim-plug
+" PlugInstall [name ...] [#threads]	Install plugins
+" PlugUpdate [name ...] [#threads]	Install or update plugins
+" PlugClean[!]	Remove unused directories (bang version will clean without prompt)
+" PlugUpgrade	Upgrade vim-plug itself
+" PlugStatus	Check the status of plugins
+" PlugDiff	Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path]	Generate script for restoring the current snapshot of the plugins
 " vim plugin bundle control, command model
 " ----------------------------------------------------------------------------
 "call plug#begin('~/.vim/bundle')
@@ -339,12 +347,12 @@ set cmdheight=2
 " easymotion {{{
     let g:EasyMotion_smartcase = 1
     "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-    map ,,h <Plug>(easymotion-linebackward)
-    map ,,j <Plug>(easymotion-j)
-    map ,,k <Plug>(easymotion-k)
-    map ,,l <Plug>(easymotion-lineforward)
+    map <leader>h <Plug>(easymotion-linebackward)
+    map <leader>j <Plug>(easymotion-j)
+    map <leader>k <Plug>(easymotion-k)
+    map <leader>l <Plug>(easymotion-lineforward)
     " 重复上一次操作, 类似repeat插件, 很强大
-    map ,,. <Plug>(easymotion-repeat)
+    map <leader>. <Plug>(easymotion-repeat)
 " }}}
 
 " quickscope {{{
@@ -430,7 +438,7 @@ map <leader>p :cp<cr>
 
 " ctrlsf {{{
     let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
-    nmap \\f <Plug>CtrlSFCwordPath<CR>
+    nmap ,` <Plug>CtrlSFCwordPath<CR>
     " let g:ctrlsf_position = 'below'
     " let g:ctrlsf_winsize = '30%'
     let g:ctrlsf_auto_close = 0
@@ -630,12 +638,12 @@ map <leader>p :cp<cr>
     " format select block
     " autocmd FileType python vnoremap <leader>y :!yapf<Cr>
 
-    " Plug 'mindriot101/vim-yapf'
-    " scriptencoding utf-8
-    " let g:yapf_style = "google"
-    " let g:yapf_style = "pep8"
-    " setenv PYTHONIOENCODING UTF-8
-    " nnoremap <leader>y :call Yapf()<cr>
+     " Plug 'mindriot101/vim-yapf'
+     " scriptencoding utf-8
+     " let g:yapf_style = "google"
+     " let g:yapf_style = "pep8"
+     " " setenv PYTHONIOENCODING UTF-8
+     " nnoremap <leader>y :call Yapf()<cr>
 " }}}
 
 
@@ -666,7 +674,6 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
-
 
 
 "------------------------------------------- end of configs --------------------------------------------
