@@ -6,7 +6,7 @@ map <Leader>ed :e D:\<cr>
 map <Leader>ee :e E:\<cr>
 map <Leader>ef :e F:\<cr>
 map <Leader>eg :e G:\<cr>
-map <Leader>eg0 :e G:\00project\aotuTest_pro\webTest_pro\<cr>
+map <Leader>eg0 :e G:\00project\autoTest_pro\webTest_pro\<cr>
 map <Leader>eg4 :e G:\04py<cr>
 
 """"""""copy current file path""""""""""""""""""

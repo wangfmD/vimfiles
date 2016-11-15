@@ -53,7 +53,7 @@ set encoding=utf8
 
 " Set font according to system
 if has("mac") || has("macunix")
-    set gfn=Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
+    set gfn=Hack:h18,Source\ Code\ Pro:h15,Menlo:h15
 elseif has("win16") || has("win32")
     set gfn=Courier\ New\:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
     " set gfn=Monaco:h12,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
