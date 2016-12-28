@@ -32,6 +32,8 @@ endif
 " ----------------------------------------------------------------------------
 "call plug#begin('~/.vim/bundle')
 call plug#begin('~/vimfiles/bundle')
+Plug 'pbrisbin/vim-mkdir'
+Plug 'danro/rename.vim'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 " Group dependencies, vim-snippets depends on ultisnips
@@ -347,7 +349,7 @@ set cmdheight=2
 " easymotion {{{
     let g:EasyMotion_smartcase = 1
     "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-    map <leader>h <Plug>(easymotion-linebackward)
+    map <leader><leader>h <Plug>(easymotion-linebackward)
     map <leader>j <Plug>(easymotion-j)
     map <leader>k <Plug>(easymotion-k)
     map <leader>l <Plug>(easymotion-lineforward)
@@ -380,7 +382,7 @@ set cmdheight=2
     let g:multi_cursor_prev_key='<C-p>'
     let g:multi_cursor_skip_key='<C-x>'
     let g:multi_cursor_quit_key='<Esc>'
-" }}}
+" }}}ctrlpfunky
 " ################### 功能相关 ###################
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ag searching and cope displaying
@@ -416,12 +418,13 @@ map <leader>p :cp<cr>
         \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
         \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
         \ }
-    let g:ctrlp_working_path_mode=0
+    let g:ctrlp_working_path_mode='ra'
     let g:ctrlp_match_window_bottom=1
     let g:ctrlp_max_height=25
     let g:ctrlp_match_window_reversed=0
     let g:ctrlp_mruf_max=500
     let g:ctrlp_follow_symlinks=1
+    let g:ctrlp_max_files = 0
 
     " ctrlpfunky
     " ctrlp插件1 - 不用ctag进行函数快速跳转
@@ -434,7 +437,7 @@ map <leader>p :cp<cr>
 	nnoremap <m-]> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
     let g:ctrlp_funky_syntax_highlight = 1
     let g:ctrlp_extensions = ['funky']
-" }}}
+" }}},
 
 " ctrlsf {{{
     let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag

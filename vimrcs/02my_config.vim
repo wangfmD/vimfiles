@@ -7,12 +7,13 @@ map <Leader>ee :e E:\<cr>
 map <Leader>ef :e F:\<cr>
 map <Leader>eg :e G:\<cr>
 map <Leader>eg0 :e G:\00project\autoTest_pro\webTest_pro\<cr>
+map <Leader>ed0 :e D:\00_project\autoTest_pro\webTest_pro\<cr>
 map <Leader>eg4 :e G:\04py<cr>
 
 """"""""copy current file path""""""""""""""""""
 nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current file path is completed!"<cr>
 nmap <C-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
-inoremap ll <Esc>
+" inoremap ll <Esc>
 inoremap \` <Esc>
 inoremap kj <Esc>
 
@@ -129,6 +130,8 @@ map <M-9> 9gt
 " 新建tab  Ctrl+t
 nnoremap <C-S-t>     :tabnew<CR>
 inoremap <C-S-t>     <Esc>:tabnew<CR>
+nnoremap <C-S-Down> ddp
+nnoremap <C-S-Up> ddkP
 
 " Toggles between the active and last active tab "
 " The first tab is always 1 "

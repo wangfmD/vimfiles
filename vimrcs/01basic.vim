@@ -72,12 +72,12 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" colorscheme molokai
+colorscheme molokai
 " 设置所在行下有一条白线
 hi CursorLine term=underline cterm=underline gui=underline ctermbg=NONE guibg=NONE guifg=NONE
 " 设置选择区域突出颜色
 hi Visual term=reverse ctermfg=16 ctermbg=153 guifg=#000000 guibg=#a6caf0
-colorscheme peaksea
+" colorscheme peaksea
 " 设置tab栏的颜色
 " hi TabLine term=underline cterm=underline ctermfg=252 ctermbg=0 gui=underline guifg=#aaaaaa guibg=#333333
 " hi TabLineFill term=reverse cterm=underline ctermfg=252 ctermbg=0 gui=underline guifg=#9098a0 guibg=#111111
