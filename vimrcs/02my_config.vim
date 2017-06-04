@@ -6,15 +6,9 @@ map <Leader>ed :e D:\<cr>
 map <Leader>ee :e E:\<cr>
 map <Leader>ef :e F:\<cr>
 map <Leader>eg :e G:\<cr>
-map <Leader>eg0 :e G:\00project\autoTest_pro\webTest_pro\<cr>
-map <Leader>ed0 :e D:\00_project\autoTest_pro\webTest_pro\<cr>
-map <Leader>eg4 :e G:\04py<cr>
-
 """"""""copy current file path""""""""""""""""""
-nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current file path is completed!"<cr>
-nmap <C-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
-" inoremap ll <Esc>
-inoremap \` <Esc>
+nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
+nmap <m-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap kj <Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -26,11 +20,8 @@ vnoremap $3 <esc>`>a}<esc>`<i{<esc>
 vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a"<esc>`<i"<esc>
-noremap <c-cr> <esc>o<esc>
-noremap $j <esc>o<esc>
-noremap $k <esc>O<esc>
-noremap <s-cr> <esc>O<esc>
 noremap <leader>e <esc>:e 
+noremap <Space>e <esc>:e 
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
@@ -49,15 +40,23 @@ cno $j e ./
 cno $e e G:\00project\aotuTest_pro\webTest_pro\
 cno $c e C:\Users\acer\vimfiles\vimrcs\
 
-inoremap <m-c> <end>
-inoremap <m-g> <home>
-inoremap <m-x> <left>
-inoremap <m-l> <right>
-inoremap <m-j> <down>
-inoremap <m-k> <up>
-inoremap <c-cr> <esc>o
-" nnoremap j jzz
-" nnoremap k kzz
+" ; split window open in new tab
+nnoremap <Space>1 <C-W>T
+inoremap <c-e> <end>
+inoremap <c-a> <home>
+inoremap <c-x><c-b> <esc>bi
+inoremap <c-x><c-f> <esc>ea
+inoremap <c-x><c-k> <up>
+inoremap <c-x><c-j> <down>
+inoremap <C-b> <left>
+inoremap <C-f> <right>
+noremap <c-cr> <esc>o<esc>
+noremap $j <esc>o<esc>
+noremap $k <esc>O<esc>
+noremap <s-cr> <esc>O<esc>
+nnoremap j jzz
+nnoremap k kzz
+
 
 nnoremap <leader>ww :set fenc=<cr>
 
@@ -115,7 +114,9 @@ map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
  " Opens a new tab with the current buffer's path
  " Super useful when editing files in the same directory
- map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>
+map <leader>cb :botright cope<cr>
+map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " normal模式下切换到确切的tab
 map <M-1> 1gt
@@ -127,9 +128,11 @@ map <M-6> 6gt
 map <M-7> 7gt
 map <M-8> 8gt
 map <M-9> 9gt
-" 新建tab  Ctrl+t
+" 新建tab  Ctrl+t space n
 nnoremap <C-S-t>     :tabnew<CR>
 inoremap <C-S-t>     <Esc>:tabnew<CR>
+nnoremap <Space>n     :tabnew<CR>
+" inoremap <Space>n     <Esc>:tabnew<CR>
 nnoremap <C-S-Down> ddp
 nnoremap <C-S-Up> ddkP
 
@@ -155,8 +158,8 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
 " 搜索相关
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
+" map <space> /
+map <space>s /
 " 进入搜索Use sane regexes"
 nnoremap / /\v
 vnoremap / /\v
@@ -189,6 +192,7 @@ vnoremap > >gv
 map Y "+y$
 " 复制选中区到系统剪切板中
 vnoremap <leader>y "+y
+vnoremap <c-c> "+y
 " select block
 nnoremap <leader>v V`}
 " 滚动Speed up scrolling of the viewport slightly
@@ -215,8 +219,7 @@ nmap <silent> <F2> :so $MYVIMRC<CR>
  vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
  vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
- " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
- map <space> /
+
  " Switch CWD to the directory of the open buffer
  map <leader>cd :cd %:p:h<cr>:pwd<cr>
  map <leader><F1> :cd %:p:h<cr>:pwd<cr>
@@ -307,7 +310,10 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <Leader>z :ZoomToggle<CR>
+
 """""""""""""""""""""""""""""""""""""
 "end
 """""""""""""""""""""""""""""""""""""
 set guioptions-=e
+set vb t_vb=
+

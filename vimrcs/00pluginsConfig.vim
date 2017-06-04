@@ -39,7 +39,8 @@ Plug 'scrooloose/syntastic'
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " 重启 :YcmRestartServer
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'davidhalter/jedi-vim'
 " 自动补全单引号，双引号等
 Plug 'Raimondi/delimitMate'
 " 自动补全html/xml标签
@@ -64,7 +65,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'terryma/vim-expand-region'
 " 多光标选中编辑
 
-" Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 " 文件搜索
 Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
 Plug 'dyng/ctrlsf.vim'
@@ -179,6 +180,7 @@ let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> ,z :Goyo<cr>
+" nnoremap <silent><Space>z :Goyo<cr>
 "" for lightline
 set cmdheight=2
 " syntastic {{{
@@ -192,7 +194,7 @@ set cmdheight=2
     " 中等
     " error code: http://pep8.readthedocs.org/en/latest/intro.html#error-codes
     let g:syntastic_python_checkers=['pyflakes', 'pep8'] " 使用pyflakes,速度比pylint快
-    let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712'
+    let g:syntastic_python_pep8_args='--ignore=E501,E225,E124,E712,E402'
     " 重量级, 但是足够强大, 定制完成后相当个性化
     " pylint codes: http://pylint-messages.wikidot.com/all-codes
     " let g:syntastic_python_checkers=['pyflakes', 'pylint'] " 使用pyflakes,速度比pylint快
@@ -238,8 +240,8 @@ set cmdheight=2
 
     nnoremap <silent> <Plug>LocationPrevious    :<C-u>exe 'call <SID>LocationPrevious()'<CR>
     nnoremap <silent> <Plug>LocationNext        :<C-u>exe 'call <SID>LocationNext()'<CR>
-    nmap <silent> <Leader>ep    <Plug>LocationPrevious
-    nmap <silent> <Leader>en    <Plug>LocationNext
+    nmap <silent> <Leader>sp    <Plug>LocationPrevious
+    nmap <silent> <Leader>sn    <Plug>LocationNext
 
     " 修改高亮的背景色, 适应主题
     "highlight SyntasticErrorSign guifg=white guibg=black
@@ -250,40 +252,65 @@ set cmdheight=2
 " }}}
 
 " ################### 自动补全 ###################
+" jedi  {{{
+" https://github.com/davidhalter/jedi-vim
+"   Completion <C-Space>
+    " Goto assignments <leader>g (typical goto function)
+    " Goto definitions <leader>d (follow identifier as far as possible, includes imports and statements)
+    " Show Documentation/Pydoc K (shows a popup with assignments)
+    " Renaming <leader>r
+    " Usages <leader>n (shows all the usages of a name)
+    " Open module, e.g. :Pyimport os (opens the os module)
+    " (:help jedi-vim)
+    " default
+    " let g:jedi#goto_command = "<leader>d"
+    " let g:jedi#goto_assignments_command = "<leader>g"
+    " let g:jedi#goto_assignments_command = "<F3>"
+    " let g:jedi#goto_definitions_command = ""
+    let g:jedi#goto_definitions_command = "<F3>"
+    " let g:jedi#documentation_command = "K"
+    " let g:jedi#usages_command = "<leader>n"
+    " let g:jedi#completions_command = "<C-Space>"
+    let g:jedi#completions_command = "<C-p>"
+    let g:jedi#completions_command = "Tab"
+    " let g:jedi#rename_command = "<leader>r"
+    " default
+" }}}
+
 " YouCompleteMe {{{
     "youcompleteme  默认tab  s-tab 和自动补全冲突
-    let g:ycm_key_list_select_completion = ['<Down>']
-    let g:ycm_key_list_previous_completion = ['<Up>']
-    let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
-    let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
-    let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
-    let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
-    let g:ycm_collect_identifiers_from_tags_files = 1
-    " 开启语法关键字补全
-    let g:ycm_seed_identifiers_with_syntax=1
-    "let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
-    " 跳转到定义处, 分屏打开
-    " let g:ycm_goto_buffer_command = 'horizontal-split'
-    let g:ycm_goto_buffer_command = 'vertical-split'
-    nnoremap <F3> :YcmCompleter GoToDefinition<CR>
-    nnoremap <m-k> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    nnoremap <leader>k :YcmCompleter GoToDeclaration<CR>
-    " 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
-    " old version
-    if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
-        let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
-    endif
-    " new version
-    if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
-        let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-    endif
-    " 直接触发自动补全 insert模式下
-    " let g:ycm_key_invoke_completion = '<C-Space>'
-    " 黑名单,不启用
-    let g:ycm_filetype_blacklist = {
-        \ 'tagbar' : 1,
-        \ 'gitcommit' : 1,
-        \}
+    " let g:ycm_key_list_select_completion = ['<Down>']
+    " let g:ycm_key_list_previous_completion = ['<Up>']
+    " let g:ycm_complete_in_comments = 1  "在注释输入中也能补全
+    " let g:ycm_complete_in_strings = 1   "在字符串输入中也能补全
+    " let g:ycm_use_ultisnips_completer = 1 "提示UltiSnips
+    " let g:ycm_collect_identifiers_from_comments_and_strings = 1   "注释和字符串中的文字也会被收入补全
+    " let g:ycm_collect_identifiers_from_tags_files = 1
+    " " 开启语法关键字补全
+    " let g:ycm_seed_identifiers_with_syntax=1
+    " "let g:ycm_seed_identifiers_with_syntax=1   "语言关键字补全, 不过python关键字都很短，所以，需要的自己打开
+    " " 跳转到定义处, 分屏打开
+    " " let g:ycm_goto_buffer_command = 'horizontal-split'
+    " let g:ycm_goto_buffer_command = 'vertical-split'
+    " nnoremap <F3> :YcmCompleter GoToDefinition<CR>
+    " nnoremap <m-k> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    " nnoremap <leader>k :YcmCompleter GoToDeclaration<CR>
+    " " 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
+    " " old version
+    " if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
+        " let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+    " endif
+    " " new version
+    " if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
+        " let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+    " endif
+    " " 直接触发自动补全 insert模式下
+    " " let g:ycm_key_invoke_completion = '<C-Space>'
+    " " 黑名单,不启用
+    " let g:ycm_filetype_blacklist = {
+        " \ 'tagbar' : 1,
+        " \ 'gitcommit' : 1,
+        " \}
 " }}}
 
 " ultisnips {{{
@@ -329,7 +356,7 @@ set cmdheight=2
 " ################### 快速编码 ###################
 " nerdcommenter {{{
     map <leader>m <Plug>NERDCommenterToggle
-    map <leader>/ <Plug>NERDCommenterToggle
+    map <m-/> <Plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1
     let g:NERDAltDelims_python = 1
 " }}}
@@ -349,13 +376,14 @@ set cmdheight=2
 " easymotion {{{
     let g:EasyMotion_smartcase = 1
     "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-    map <leader><leader>h <Plug>(easymotion-linebackward)
-    map <leader>j <Plug>(easymotion-j)
-    map <leader>k <Plug>(easymotion-k)
-    map <leader>l <Plug>(easymotion-lineforward)
+    map <Space>h <Plug>(easymotion-linebackward)
+    map <Space>j <Plug>(easymotion-j)
+    map <Space>k <Plug>(easymotion-k)
+    map <Space>l <Plug>(easymotion-lineforward)
     " 重复上一次操作, 类似repeat插件, 很强大
-    map <leader>. <Plug>(easymotion-repeat)
+    map <Space>. <Plug>(easymotion-repeat)
 " }}}
+
 
 " quickscope {{{
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -391,12 +419,12 @@ set cmdheight=2
 " When you press gv you Ag after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " Open Ag and put the cursor in the right position
-map <leader>g :Ag
+map <leader>a :ack
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " Do :help cope if you are unsure what cope is. It's super useful!
 " When you search with Ag, display your results in cope by doing:
-"   <leader>cc
+" <leader>cc
 " To go to the next search result do:
 "   <leader>n
 " To go to the previous search results do:
@@ -429,19 +457,19 @@ map <leader>p :cp<cr>
     " ctrlpfunky
     " ctrlp插件1 - 不用ctag进行函数快速跳转
     nnoremap <Leader>fu :CtrlPFunky<Cr>
-    nnoremap <Leader><F12> :CtrlPFunky<Cr>
+    nnoremap <Space>fu :CtrlPFunky<Cr>
 	nnoremap <m-[> :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
     nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-    nnoremap <F12> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 	nnoremap <m-]> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
     let g:ctrlp_funky_syntax_highlight = 1
     let g:ctrlp_extensions = ['funky']
 " }}},
 
 " ctrlsf {{{
-    let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
-    nmap ,` <Plug>CtrlSFCwordPath<CR>
+    let g:ctrlsf_ackprg = 'ack'    " 设置ctrlsf 使用ag
+        nmap ,` <Plug>CtrlSFCwordPath<CR>
+	nmap <Space>w <Plug>CtrlSFCwordPath<CR>
     " let g:ctrlsf_position = 'below'
     " let g:ctrlsf_winsize = '30%'
     let g:ctrlsf_auto_close = 0
@@ -566,18 +594,22 @@ map <leader>p :cp<cr>
     let g:nerdtree_tabs_open_on_console_startup=0
     let g:nerdtree_tabs_open_on_gui_startup=0
     " 打开当前文件的Tree
-    map ,n :NERDTreeToggle<CR>
-    " nerdtreetabs
-	map <F1> :NERDTreeToggle<cr>
-    map ,nn :NERDTreeToggle<cr>
-    map ,nb :NERDTreeFromBookmark
-    map ,nf :NERDTreeFind<cr>
-	map <m-n> :NERDTreeFind<cr>
+    map ,n <esc>:NERDTreeToggle<CR>
+    inoremap ,n :NERDTreeToggle<CR>
+    " nerdtreetabs	
+    map <F1> :NERDTreeToggle<cr>    
+    inoremap <F1> <esc> :NERDTreeToggle<cr>    
+    map <Space>nn :NERDTreeToggle<cr>
+    map <Space>nb :NERDTreeFromBookmark
+    map <Space>nf :NERDTreeFind<cr>	
+    map <m-n> :NERDTreeFind<cr>
+
 " }}}
 
 " Vim Workspace Controller
 " ctrlspace {{{
     nnoremap <silent><m-space> :CtrlSpace<CR>
+    nnoremap <silent><Leader>o :CtrlSpace<CR>
     nnoremap <silent>,o :CtrlSpace<CR>
     let g:airline_exclude_preview = 1
     hi CtrlSpaceSelected guifg=#586e75 guibg=#eee8d5 guisp=#839496 gui=reverse,bold ctermfg=10 ctermbg=7 cterm=reverse,bold
@@ -614,6 +646,7 @@ map <leader>p :cp<cr>
 
     let g:quickrun_no_default_key_mappings = 1
     nmap <Leader>r <Plug>(quickrun)
+    nmap <Space>r <Plug>(quickrun)
     map <F10> :QuickRun<CR>
 " }}}
 
@@ -681,3 +714,58 @@ let g:lightline = {
 
 "------------------------------------------- end of configs --------------------------------------------
 " Set extra options when running in GUI mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CmdLine(str)
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction 
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ag \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    endif
+    return ''
+endfunction
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
