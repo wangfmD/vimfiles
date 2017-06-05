@@ -51,11 +51,12 @@ inoremap <c-x><c-k> <up>
 inoremap <c-x><c-j> <down>
 inoremap <C-b> <left>
 inoremap <C-f> <right>
-noremap <c-cr> <esc>o<esc>
 noremap $j <esc>o<esc>
 noremap $k <esc>O<esc>
 noremap <s-cr> <esc>O<esc>
-
+inoremap <s-cr> <esc>O<esc>i
+noremap <c-cr> <esc>o<esc>
+inoremap <c-cr> <esc>o<esc>i
 
 
 nnoremap <leader>ww :set fenc=<cr>
@@ -132,7 +133,6 @@ map <M-9> 9gt
 nnoremap <C-S-t>     :tabnew<CR>
 inoremap <C-S-t>     <Esc>:tabnew<CR>
 nnoremap <Space>n     :tabnew<CR>
-inoremap <Space>n     <Esc>:tabnew<CR>
 nnoremap <C-S-Down> ddp
 nnoremap <C-S-Up> ddkP
 

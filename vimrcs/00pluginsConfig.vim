@@ -39,7 +39,7 @@ Plug 'scrooloose/syntastic'
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " 重启 :YcmRestartServer
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 " 自动补全单引号，双引号等
 Plug 'Raimondi/delimitMate'
@@ -429,8 +429,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ctrlp  ctrlpfunky{{{
-    let g:ctrlp_map = ',P'
-    " let g:ctrlp_map = '<m-P>'
+    let g:ctrlp_map = ',p'
     let g:ctrlp_cmd = 'CtrlP'
     map ,f :CtrlPMRU<CR>
     map <leader>b :CtrlPBuffer<cr>
@@ -438,7 +437,8 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
         \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
         \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
         \ }
-    let g:ctrlp_working_path_mode='ra'
+    " let g:ctrlp_working_path_mode='ra'
+    let g:ctrlp_working_path_mode='wra'
     let g:ctrlp_match_window_bottom=1
     let g:ctrlp_max_height=25
     let g:ctrlp_match_window_reversed=0
@@ -458,9 +458,9 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " }}},
 
 " ctrlsf {{{
-    let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
-        nmap ,` <Plug>CtrlSFCwordPath<CR>
-	nmap <Space>w <Plug>CtrlSFCwordPath<CR>
+    let g:ctrlsf_ackprg = 'ack'    " 设置ctrlsf 使用ag
+        nmap ,` <Plug>CtrlSFPrompt
+        nmap <Space>w <Plug>CtrlSFCwordPath
     " let g:ctrlsf_position = 'below'
     " let g:ctrlsf_winsize = '30%'
     let g:ctrlsf_auto_close = 0
