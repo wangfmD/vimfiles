@@ -1,3 +1,9 @@
+"
+" 修改leader键
+" let mapleader = '<Space>'
+" let g:mapleader = '<Space>'
+"
+"
 " ==========================================
 " bundle 插件管理和配置项
 " ################### 包依赖 #####################
@@ -179,8 +185,7 @@ call plug#end()
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
-nnoremap <silent> ,z :Goyo<cr>
-" nnoremap <silent><Space>z :Goyo<cr>
+nnoremap <silent><Space>z :Goyo<cr>
 "" for lightline
 set cmdheight=2
 " syntastic {{{
@@ -252,31 +257,6 @@ set cmdheight=2
 " }}}
 
 " ################### 自动补全 ###################
-" jedi  {{{
-" https://github.com/davidhalter/jedi-vim
-"   Completion <C-Space>
-    " Goto assignments <leader>g (typical goto function)
-    " Goto definitions <leader>d (follow identifier as far as possible, includes imports and statements)
-    " Show Documentation/Pydoc K (shows a popup with assignments)
-    " Renaming <leader>r
-    " Usages <leader>n (shows all the usages of a name)
-    " Open module, e.g. :Pyimport os (opens the os module)
-    " (:help jedi-vim)
-    " default
-    " let g:jedi#goto_command = "<leader>d"
-    " let g:jedi#goto_assignments_command = "<leader>g"
-    " let g:jedi#goto_assignments_command = "<F3>"
-    " let g:jedi#goto_definitions_command = ""
-    let g:jedi#goto_definitions_command = "<F3>"
-    " let g:jedi#documentation_command = "K"
-    " let g:jedi#usages_command = "<leader>n"
-    " let g:jedi#completions_command = "<C-Space>"
-    let g:jedi#completions_command = "<C-p>"
-    let g:jedi#completions_command = "Tab"
-    " let g:jedi#rename_command = "<leader>r"
-    " default
-" }}}
-
 " YouCompleteMe {{{
     "youcompleteme  默认tab  s-tab 和自动补全冲突
     let g:ycm_key_list_select_completion = ['<Down>']
@@ -356,6 +336,7 @@ set cmdheight=2
 " ################### 快速编码 ###################
 " nerdcommenter {{{
     map <leader>m <Plug>NERDCommenterToggle
+    " map <leader>/ <Plug>NERDCommenterToggle
     map <m-/> <Plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1
     let g:NERDAltDelims_python = 1
@@ -383,7 +364,6 @@ set cmdheight=2
     " 重复上一次操作, 类似repeat插件, 很强大
     map <Space>. <Plug>(easymotion-repeat)
 " }}}
-
 
 " quickscope {{{
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -424,13 +404,21 @@ map <leader>a :Ag
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " Do :help cope if you are unsure what cope is. It's super useful!
 " When you search with Ag, display your results in cope by doing:
+" <leader>cc
+" To go to the next search result do:
+"   <leader>n
+" To go to the previous search results do:
+"   <leader>p
+"
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+map <leader>n :cn<cr>
+map <leader>p :cp<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ctrlp  ctrlpfunky{{{
-    let g:ctrlp_map = ',P'
-    " let g:ctrlp_map = '<m-P>'
+    let g:ctrlp_map = ',p'
     let g:ctrlp_cmd = 'CtrlP'
     map ,f :CtrlPMRU<CR>
     map <leader>b :CtrlPBuffer<cr>
@@ -445,13 +433,14 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     let g:ctrlp_mruf_max=500
     let g:ctrlp_follow_symlinks=1
     let g:ctrlp_max_files = 0
-    " let g:ctrlp_funky_after_jump = 'zxzt'
 
     " ctrlpfunky
     " ctrlp插件1 - 不用ctag进行函数快速跳转
-    nnoremap <Space>f :CtrlPFunky<Cr>
+    nnoremap <Leader>fu :CtrlPFunky<Cr>
+    nnoremap <Space>fu :CtrlPFunky<Cr>
 	nnoremap <m-[> :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
+    nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 	nnoremap <m-]> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
     let g:ctrlp_funky_syntax_highlight = 1
     let g:ctrlp_extensions = ['funky']
@@ -459,14 +448,11 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " ctrlsf {{{
     let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
-        nmap ,` <Plug>CtrlSFCwordPath<CR>
-	nmap <Space>w <Plug>CtrlSFCwordPath<CR>
+    nmap <Space>w <Plug>CtrlSFCwordPath<CR>
     " let g:ctrlsf_position = 'below'
     " let g:ctrlsf_winsize = '30%'
     let g:ctrlsf_auto_close = 0
     let g:ctrlsf_confirm_save = 0
-    let g:ctrlsf_default_root = 'project+fw'
-
     " Note: cannot use <CR> or <C-m> for open
     " Use : <sapce> or <tab>
     let g:ctrlsf_mapping = {
@@ -587,21 +573,17 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     let g:nerdtree_tabs_open_on_console_startup=0
     let g:nerdtree_tabs_open_on_gui_startup=0
     " 打开当前文件的Tree
-    map ,n <esc>:NERDTreeToggle<CR>
-    inoremap ,n :NERDTreeToggle<CR>
+    map ,n :NERDTreeToggle<CR>
     " nerdtreetabs
-    map <F1> :NERDTreeToggle<cr>
-    inoremap <F1> <esc> :NERDTreeToggle<cr>
+	map <F1> :NERDTreeToggle<cr>
     map <Space>nn :NERDTreeToggle<cr>
     map <Space>nb :NERDTreeFromBookmark
     map <Space>nf :NERDTreeFind<cr>
-    map <m-n> :NERDTreeFind<cr>
-
+	map <m-n> :NERDTreeFind<cr>
 " }}}
 
 " Vim Workspace Controller
 " ctrlspace {{{
-    nnoremap <silent><m-space> :CtrlSpace<CR>
     nnoremap <silent><Leader>o :CtrlSpace<CR>
     nnoremap <silent>,o :CtrlSpace<CR>
     let g:airline_exclude_preview = 1
@@ -614,7 +596,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " 标签导航
 " tagbar {{{
     nmap <F9> :TagbarToggle<CR>
-    map <m-o> :TagbarToggle<CR>
+    " map <Space>o :TagbarToggle<CR>
     let g:tagbar_autofocus = 1
     " let g:tagbar_autoshowtag = 1
     " let g:tagbar_show_visibility = 1
@@ -629,6 +611,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
             \ 'F:singleton methods'
         \ ]
     \ }
+
 " ################### 语言相关 ###################
 " quickrun {{{
     let g:quickrun_config = {
@@ -638,6 +621,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     \}
 
     let g:quickrun_no_default_key_mappings = 1
+    " nmap <Leader>r <Plug>(quickrun)
     nmap <Space>r <Plug>(quickrun)
     map <F10> :QuickRun<CR>
 " }}}
@@ -662,7 +646,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " beta {{{
     " python code format
     " format all file
-    autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+    autocmd FileType python nnoremap <Leader>t :0,$!yapf<Cr>
     " format select block
     " autocmd FileType python vnoremap <leader>y :!yapf<Cr>
 
@@ -713,7 +697,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction
+endfunction 
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"

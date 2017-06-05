@@ -112,8 +112,8 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
+ " Opens a new tab with the current buffer's path
+ " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
@@ -212,18 +212,18 @@ nnoremap U <C-r>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <F2> :so $MYVIMRC<CR>
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+ """"""""""""""""""""""""""""""
+ " => Visual mode related
+ """"""""""""""""""""""""""""""
+ " Visual mode pressing * or # searches for the current selection
+ " Super useful! From an idea by Michael Naumann
+ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-map <leader><F1> :cd %:p:h<cr>:pwd<cr>
+ " Switch CWD to the directory of the open buffer
+ map <leader>cd :cd %:p:h<cr>:pwd<cr>
+ map <leader><F1> :cd %:p:h<cr>:pwd<cr>
 
 
 """""""""""""""""""""""""""""""""""""
@@ -245,11 +245,11 @@ endfun
 "显示相对行号ctrl-n
 """""""""""""""""""""""""""""""""""""
 function! NumberToggle()
-    if(&relativenumber == 1)
-        set norelativenumber number
-    else
-        set relativenumber
-    endif
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
@@ -258,14 +258,14 @@ nnoremap <C-n> :call NumberToggle()<cr>
 """""""""""""""""""""""""""""""""""""
 " F2 行号开关，用于鼠标复制代码用
 function! HideNumber()
-    if(&relativenumber == &number)
-        set relativenumber! number!
-    elseif(&number)
-        set number!
-    else
-        set relativenumber!
-    endif
-    set number?
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
 endfunc
 nnoremap <C-F2> :call HideNumber()<CR>
 
@@ -279,17 +279,17 @@ nnoremap <C-F4> :set wrap! wrap?<CR>
 nnoremap <C-F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 set pastetoggle=<C-F5>            "    when in insert mode, press <F5> to go to
-"    paste mode, where you can paste mass data
-"    that won't be autoindented
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
 " F5 set paste问题已解决, 粘贴代码前不需要按F5了
 " F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
 " Automatically set paste mode in Vim when pasting in insert mode
 function! XTermPasteBegin()
-    set pastetoggle=<Esc>[201~
-    set paste
-    return ""
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
 endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
@@ -311,8 +311,11 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <Leader>z :ZoomToggle<CR>
+
 """""""""""""""""""""""""""""""""""""
 "end
 """""""""""""""""""""""""""""""""""""
 set guioptions-=e
 set vb t_vb=
+
+
