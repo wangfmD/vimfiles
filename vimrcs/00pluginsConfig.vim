@@ -21,14 +21,6 @@ endif
 " ----------------------------------------------------------------------------
 " 使用 vim-plug 管理插件
 " https://github.com/junegunn/vim-plug
-" PlugInstall [name ...] [#threads]	Install plugins
-" PlugUpdate [name ...] [#threads]	Install or update plugins
-" PlugClean[!]	Remove unused directories (bang version will clean without prompt)
-" PlugUpgrade	Upgrade vim-plug itself
-" PlugStatus	Check the status of plugins
-" PlugDiff	Examine changes from the previous update and the pending changes
-" PlugSnapshot[!] [output path]	Generate script for restoring the current snapshot of the plugins
-" vim plugin bundle control, command model
 " ----------------------------------------------------------------------------
 "call plug#begin('~/.vim/bundle')
 call plug#begin('~/vimfiles/bundle')
@@ -39,7 +31,7 @@ Plug 'scrooloose/syntastic'
 " Group dependencies, vim-snippets depends on ultisnips
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " 重启 :YcmRestartServer
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 " 自动补全单引号，双引号等
 Plug 'Raimondi/delimitMate'
@@ -390,8 +382,6 @@ set cmdheight=2
 " }}}
 " ################### 快速选中 ###################
 " expandregion {{{
-    " map + <Plug>(expand_region_expand)
-    " map _ <Plug>(expand_region_shrink)
     vmap v <Plug>(expand_region_expand)
     vmap V <Plug>(expand_region_shrink)
     " Extend the global default
@@ -458,7 +448,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " }}},
 
 " ctrlsf {{{
-    let g:ctrlsf_ackprg = 'ack'    " 设置ctrlsf 使用ag
+    let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
         nmap ,` <Plug>CtrlSFPrompt
         nmap <Space>w <Plug>CtrlSFCwordPath
     " let g:ctrlsf_position = 'below'

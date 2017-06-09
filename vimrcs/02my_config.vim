@@ -1,4 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <Space>0 :call FindDef('def', '')<CR>
+nnoremap <silent> <Space>9 /def <CR>
 ""配置快捷键，进入常用目录
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader>ecv :e C:\Users\acer\vimfiles\vimrcs\<cr>
@@ -91,7 +93,8 @@ nnoremap gj j
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <Space>3 <C-W>h
+map <Space>4 <C-W>l
 
 
 " tab 操作
@@ -130,8 +133,8 @@ map <M-7> 7gt
 map <M-8> 8gt
 map <M-9> 9gt
 " 新建tab  Ctrl+t space n
-nnoremap <C-S-t>     :tabnew<CR>
-inoremap <C-S-t>     <Esc>:tabnew<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
 nnoremap <Space>n     :tabnew<CR>
 nnoremap <C-S-Down> ddp
 nnoremap <C-S-Up> ddkP
@@ -191,9 +194,13 @@ vnoremap > >gv
 " y$ -> Y Make Y behave like other capitals
 map Y "+y$
 " 复制选中区到系统剪切板中
-vnoremap <leader>y "+y
-vnoremap <leader>p "+p
 vnoremap <c-c> "+y
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 " select block
 nnoremap <leader>v V`}
 " 滚动Speed up scrolling of the viewport slightly
@@ -211,7 +218,7 @@ nnoremap U <C-r>
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-nmap <silent> <F2> :so $MYVIMRC<CR>
+nmap <silent> <C-F9> :so $MYVIMRC<CR>
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
@@ -316,3 +323,22 @@ nnoremap <silent> <Leader>z :ZoomToggle<CR>
 """""""""""""""""""""""""""""""""""""
 set guioptions-=e
 set vb t_vb=
+function! FindDef(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'def'
+        call CmdLine("/def\\s\\\\\|class\\s")
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+nnoremap <CR> G
+nnoremap <BS> gg
