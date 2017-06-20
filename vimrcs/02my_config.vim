@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <Space>0 :call FindDef('def', '')<CR>
+" nnoremap <silent> <Space>0 :call FindDef('def', '')<CR>
 nnoremap <silent> <Space>0 /def\s\\|class\s<CR>
 nnoremap <silent> <Space>9 /def <CR>
 ""配置快捷键，进入常用目录
