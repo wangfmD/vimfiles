@@ -582,10 +582,11 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     " nerdtreetabs
     map <F1> :NERDTreeToggle<cr>
     inoremap <F1> <esc> :NERDTreeToggle<cr>
+    map <F2> :NERDTreeFind<cr>
+    inoremap <F2> <esc> :NERDTreeFind<cr>
     map <Space>nn :NERDTreeToggle<cr>
     map <Space>nb :NERDTreeFromBookmark
     map <Space>nf :NERDTreeFind<cr>
-    map <m-n> :NERDTreeFind<cr>
 
 " }}}
 

@@ -9,6 +9,7 @@ map <Leader>ed :e D:\<cr>
 map <Leader>ee :e E:\<cr>
 map <Leader>ef :e F:\<cr>
 map <Leader>eg :e G:\<cr>
+map <Leader>em :e /opt/autoTest_pro/<cr>
 
 """"""""copy current file path""""""""""""""""""
 nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
@@ -48,8 +49,8 @@ cno $c e C:\Users\acer\vimfiles\vimrcs\
 nnoremap <Space>1 <C-W>T
 inoremap <c-e> <end>
 inoremap <c-a> <home>
-inoremap <c-x><c-b> <esc>bi
-inoremap <c-x><c-f> <esc>ea
+inoremap <c-x><c-b> <esc>Bi
+inoremap <c-x><c-f> <esc>Ea
 inoremap <c-x><c-k> <up>
 inoremap <c-x><c-j> <down>
 inoremap <C-b> <left>
@@ -343,3 +344,5 @@ endfunction
 
 nnoremap <CR> G
 nnoremap <BS> gg
+" autocmd VimEnter * NERDTree
+nnoremap  <Space>e :NERDTree 
