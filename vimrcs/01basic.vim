@@ -59,7 +59,8 @@ elseif has("win16") || has("win32")
     " set gfn=Monaco:h12,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
 elseif has("gui_gtk2")
     " set gfn=Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
-    set gfn=DejaVu\ Sans\ Mono\ 11
+    " set gfn=DejaVu\ Sans\ Mono\ 11
+    set gfn=Liberation\ Mono\ 11
     " set gfn=AR\ PL\ UKai\ CN\ 12
 elseif has("linux")
     set gfn=Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11

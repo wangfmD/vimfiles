@@ -1,15 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nnoremap <silent> <Space>0 :call FindDef('def', '')<CR>
 nnoremap <silent> <Space>0 /def\s\\|class\s<CR>
 nnoremap <silent> <Space>9 /def <CR>
-""配置快捷键，进入常用目录
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Leader>ecv :e C:\Users\acer\vimfiles\vimrcs\<cr>
-map <Leader>ed :e D:\<cr>
-map <Leader>ee :e E:\<cr>
-map <Leader>ef :e F:\<cr>
-map <Leader>eg :e G:\<cr>
-map <Leader>em :e /opt/autoTest_pro/<cr>
 
 """"""""copy current file path""""""""""""""""""
 nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
@@ -25,8 +16,8 @@ vnoremap $3 <esc>`>a}<esc>`<i{<esc>
 vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a"<esc>`<i"<esc>
-noremap <leader>e <esc>:e 
-noremap <Space>e <esc>:e 
+noremap <leader>e <esc>:e
+nnoremap  <Space>e :NERDTree
 
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
@@ -43,7 +34,6 @@ cno $h e ~/
 cno $d e ~/Desktop/
 cno $j e ./
 "cno $c e <C-\>eCurrentFileDir("e")<cr>
-cno $c e C:\Users\acer\vimfiles\vimrcs\
 
 " ; split window open in new tab
 nnoremap <Space>1 <C-W>T
@@ -61,8 +51,6 @@ noremap <s-cr> <esc>O<esc>
 inoremap <s-cr> <esc>O<esc>i
 noremap <c-cr> <esc>o<esc>
 inoremap <c-cr> <esc>o<esc>i
-
-
 nnoremap <leader>ww :set fenc=<cr>
 
 " highlight OverLength ctermbg=red ctermfg=white guibg=#592929 match OverLength /\%81v.\+/
@@ -105,8 +93,6 @@ map <Space>4 <C-W>l
 " tab切换
 map <leader>th :tabfirst<cr>
 map <leader>tl :tablast<cr>
-" map <leader>tj :tabnext<cr>
-" map <leader>tk :tabprev<cr>
 map ]t :tabnext<cr>
 map [t :tabprev<cr>
 " map <right> :tabnext<cr>
@@ -137,7 +123,6 @@ map <M-9> 9gt
 " 新建tab  Ctrl+t space n
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
-nnoremap <Space>n     :tabnew<CR>
 nnoremap <C-S-Down> ddp
 nnoremap <C-S-Up> ddkP
 
@@ -163,7 +148,6 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
 " 搜索相关
-" map <space> /
 map <space>s /
 " 进入搜索Use sane regexes"
 nnoremap / /\v
@@ -219,7 +203,6 @@ nnoremap ` '
 nnoremap U <C-r>
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <C-F9> :so $MYVIMRC<CR>
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -320,9 +303,8 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <Leader>z :ZoomToggle<CR>
-"""""""""""""""""""""""""""""""""""""
-"end
-"""""""""""""""""""""""""""""""""""""
+
+
 set guioptions-=e
 set vb t_vb=
 function! FindDef(direction, extra_filter) range
@@ -345,4 +327,19 @@ endfunction
 nnoremap <CR> G
 nnoremap <BS> gg
 " autocmd VimEnter * NERDTree
-nnoremap  <Space>e :NERDTree 
+
+""""""""""""""OS CONF""""""""""""""""
+""配置快捷键，进入常用目录
+"""""""""""""""""""""""""""""""""""""
+if has("win16") || has("win32")
+    map <Leader>eo :e /opt/github/<cr>
+    map <Leader>ed :e D:\<cr>
+    map <Leader>ee :e E:\<cr>
+    map <Leader>ef :e F:\<cr>
+    map <Leader>eg :e G:\<cr>
+else
+    map <Leader>eo :e /opt/github/<cr>
+endif
+"""""""""""""""""""""""""""""""""""""
+"end
+"""""""""""""""""""""""""""""""""""""
