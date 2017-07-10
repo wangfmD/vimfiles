@@ -428,6 +428,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
         \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
         \ }
     " let g:ctrlp_working_path_mode='ra'
+    " let g:ctrlp_working_path_mode = 0
     let g:ctrlp_working_path_mode='wra'
     let g:ctrlp_match_window_bottom=1
     let g:ctrlp_max_height=25
@@ -435,6 +436,9 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     let g:ctrlp_mruf_max=500
     let g:ctrlp_follow_symlinks=1
     let g:ctrlp_max_files = 0
+    let g:ctrlp_by_filename = 1
+    "自定义搜索列表的提示符
+    let g:ctrlp_line_prefix = '♪ '
     " let g:ctrlp_funky_after_jump = 'zxzt'
 
     " ctrlpfunky
