@@ -332,11 +332,12 @@ nnoremap <BS> gg
 ""配置快捷键，进入常用目录
 """""""""""""""""""""""""""""""""""""
 if has("win16") || has("win32")
-    map <Leader>eo :e /opt/github/<cr>
     map <Leader>ed :e D:\<cr>
     map <Leader>ee :e E:\<cr>
     map <Leader>ef :e F:\<cr>
     map <Leader>eg :e G:\<cr>
+    map <Leader>eo :NERDTree G:\03_gitHub_pro\github_wangfmD\notes<cr>
+    map <Leader>ea :NERDTree D:\00_opt\autoTest_pro\<cr>
 else
     map <Leader>eo :NERDTree /opt/github/<cr>
     map <Leader>ea :NERDTree /opt/autoTest_pro/<cr>
