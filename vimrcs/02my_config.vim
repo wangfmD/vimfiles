@@ -103,7 +103,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+map <leader>t<leader> :tabnext<cr>
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>
@@ -111,15 +111,15 @@ map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " normal模式下切换到确切的tab
-map <M-1> 1gt
-map <M-2> 2gt
-map <M-3> 3gt
-map <M-4> 4gt
-map <M-5> 5gt
-map <M-6> 6gt
-map <M-7> 7gt
-map <M-8> 8gt
-map <M-9> 9gt
+" map <M-1> 1gt
+" map <M-2> 2gt
+" map <M-3> 3gt
+" map <M-4> 4gt
+" map <M-5> 5gt
+" map <M-6> 6gt
+" map <M-7> 7gt
+" map <M-8> 8gt
+" map <M-9> 9gt
 " 新建tab  Ctrl+t space n
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
@@ -338,7 +338,8 @@ if has("win16") || has("win32")
     map <Leader>ef :e F:\<cr>
     map <Leader>eg :e G:\<cr>
 else
-    map <Leader>eo :e /opt/github/<cr>
+    map <Leader>eo :NERDTree /opt/github/<cr>
+    map <Leader>ea :NERDTree /opt/autoTest_pro/<cr>
 endif
 """""""""""""""""""""""""""""""""""""
 "end
