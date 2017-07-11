@@ -38,7 +38,7 @@ cno $j e ./
 " ; split window open in new tab
 nnoremap <Space>1 <C-W>T
 inoremap <c-e> <end>
-inoremap <c-a> <home>
+inoremap <c-a> <esc>^i
 inoremap <c-x><c-b> <esc>Bi
 inoremap <c-x><c-f> <esc>Ea
 inoremap <c-x><c-k> <up>
