@@ -470,8 +470,8 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
         \ "tabb"  : "T",
         \ "prevw" : "p",
         \ "quit"  : "q",
-        \ "next"  : "<C-J>",
-        \ "prev"  : "<C-K>",
+        \ "next"  : "<C-n>",
+        \ "prev"  : "<C-p>",
         \ "pquit" : "q",
         \ }
 " }}}

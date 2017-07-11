@@ -181,6 +181,7 @@ vnoremap > >gv
 map Y "+y$
 " 复制选中区到系统剪切板中
 vnoremap <c-c> "+y
+vnoremap <c-v> "+p
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
