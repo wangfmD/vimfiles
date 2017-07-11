@@ -422,7 +422,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     let g:ctrlp_map = ',p'
     let g:ctrlp_cmd = 'CtrlP'
     map ,f :CtrlPMRU<CR>
-    map <leader>b :CtrlPBuffer<cr>
+    map ,b :CtrlPBuffer<cr>
     let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
         \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
@@ -453,7 +453,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " ctrlsf {{{
     let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
-        nmap ,` <Plug>CtrlSFPrompt
+        nmap <Space>` <Plug>CtrlSFPrompt
         nmap <Space>w <Plug>CtrlSFCwordPath
     " let g:ctrlsf_position = 'below'
     " let g:ctrlsf_winsize = '30%'
@@ -586,8 +586,12 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     " nerdtreetabs
     map <F1> :NERDTreeToggle<cr>
     inoremap <F1> <esc> :NERDTreeToggle<cr>
+    map <m-1> :NERDTreeToggle<cr>
+    inoremap <m-1> <esc> :NERDTreeToggle<cr>
     map <F2> :NERDTreeFind<cr>
     inoremap <F2> <esc> :NERDTreeFind<cr>
+    map <m-2> :NERDTreeFind<cr>
+    inoremap <m-2> <esc> :NERDTreeFind<cr>
     map <Space>nn :NERDTreeToggle<cr>
     map <Space>nb :NERDTreeFromBookmark
     map <Space>nf :NERDTreeFind<cr>
