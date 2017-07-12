@@ -175,23 +175,10 @@ snippet dk "api doc"
 
 endsnippet
 
-snippet fid "docstring"
-"""
-  Desc:  $Desc$
-  Args:  $Args$
-  Return: $Return$
-  Maintainer: wangfm
-  CreateDate: `!v strftime("%Y-%m-%d %H:%M:%S")`
-"""
-endsnippet
-
 snippet fdoc "func doc"
-"""
-  Desc: ${0}
-  Args:  ${1}
-  Return: ${2}
-  Maintainer: wangfm
-  CreateDate: `!v strftime("%Y-%m-%d %H:%M:%S")`
+"""${1:docstring}
+  maintainer: wangfm
+  createDate: `!v strftime("%Y-%m-%d %H:%M:%S")`
 """
 endsnippet
 
