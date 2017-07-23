@@ -93,8 +93,8 @@ map <Space>4 <C-W>l
 " tab切换
 map <leader>th :tabfirst<cr>
 map <leader>tl :tablast<cr>
-map ]t :tabnext<cr>
-map [t :tabprev<cr>
+map t] :tabnext<cr>
+map t[ :tabprev<cr>
 " map <right> :tabnext<cr>
 " map <left> :tabprev<cr>
 " map <leader>te :tabedit<cr>
@@ -170,8 +170,8 @@ nnoremap * #
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
-nnoremap [b :bprevious<cr>
-nnoremap ]b :bnext<cr>
+nnoremap b[ :bprevious<cr>
+nnoremap b] :bnext<cr>
 
 
 " 调整缩进后自动选中，方便再次操作
