@@ -139,6 +139,7 @@ autocmd TabLeave * let g:last_active_tab = tabpagenr()
 noremap H ^
 noremap L $
 nnoremap ; :
+nnoremap <m-x> :
 
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 cnoremap <C-A>		<Home>
