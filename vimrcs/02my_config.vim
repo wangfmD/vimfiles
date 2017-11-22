@@ -1,10 +1,23 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <Space>0 /def\s\\|class\s<CR>
+nnoremap <silent> <Space>8 /def\s\\|class\s<CR>
 nnoremap <silent> <Space>9 /def <CR>
+map <space>s /
+nnoremap  <Space>e :NERDTree
+
+map <leader>1 :vs <CR>
+map <leader>2 :sp <CR>
+map <leader>3 <C-W>h
+map <leader>4 <C-W>l
+map <leader>0 <C-W>T
+" nnoremap <Space>1  <CR>
+" nnoremap <Space>2  <CR>
+nnoremap <D-s> :w <CR>
+nnoremap <D-v> "+P
 
 """"""""copy current file path""""""""""""""""""
-nmap <S-C> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
+nmap <S-c> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
 nmap <m-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
+" nmap <D-c> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap kj <Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,7 +30,6 @@ vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a"<esc>`<i"<esc>
 noremap <leader>e <esc>:e
-nnoremap  <Space>e :NERDTree
 
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
@@ -36,7 +48,6 @@ cno $j e ./
 "cno $c e <C-\>eCurrentFileDir("e")<cr>
 
 " ; split window open in new tab
-nnoremap <Space>1 <C-W>T
 inoremap <c-e> <end>
 inoremap <c-a> <esc>^i
 inoremap <c-x><c-b> <esc>Bi
@@ -81,8 +92,6 @@ nnoremap gj j
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
-map <Space>3 <C-W>h
-map <Space>4 <C-W>l
 
 
 " tab 操作
@@ -109,16 +118,24 @@ map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " normal模式下切换到确切的tab
-" map <M-1> 1gt
-" map <M-2> 2gt
-" map <M-3> 3gt
-" map <M-4> 4gt
-" map <M-5> 5gt
-" map <M-6> 6gt
-" map <M-7> 7gt
-" map <M-8> 8gt
-" map <M-9> 9gt
-" 新建tab  Ctrl+t space n
+map <M-1> 1gt
+map <M-2> 2gt
+map <M-3> 3gt
+map <M-4> 4gt
+map <M-5> 5gt
+map <M-6> 6gt
+map <M-7> 7gt
+map <M-8> 8gt
+map <M-9> 9gt
+map <d-1> 1gt
+map <d-2> 2gt
+map <d-3> 3gt
+map <d-4> 4gt
+map <d-5> 5gt
+map <d-6> 6gt
+map <d-7> 7gt
+map <d-8> 8gt
+map <d-9> 9gt
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 nnoremap <C-S-Down> ddp
@@ -147,7 +164,6 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
 " 搜索相关
-map <space>s /
 " 进入搜索Use sane regexes"
 nnoremap / /\v
 vnoremap / /\v
@@ -181,6 +197,10 @@ map Y "+y$
 " 复制选中区到系统剪切板中
 vnoremap <c-c> "+y
 vnoremap <c-v> "+p
+vnoremap <D-c> "+y
+noremap <c-c> "+y
+noremap <c-v> "+p
+noremap <D-c> "+y
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -204,6 +224,7 @@ nnoremap U <C-r>
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <C-F9> :so $MYVIMRC<CR>
+nmap <silent> <leader>es :so $MYVIMRC<CR>
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""

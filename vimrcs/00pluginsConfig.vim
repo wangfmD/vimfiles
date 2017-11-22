@@ -24,6 +24,8 @@ endif
 " ----------------------------------------------------------------------------
 "call plug#begin('~/.vim/bundle')
 call plug#begin('~/vimfiles/bundle')
+" Install Vim-go
+Plug'fatih/vim-go'
 Plug 'pbrisbin/vim-mkdir'
 Plug 'danro/rename.vim'
 Plug 'rking/ag.vim'
@@ -349,6 +351,7 @@ set cmdheight=2
 " nerdcommenter {{{
     map <leader>m <Plug>NERDCommenterToggle
     map <m-/> <Plug>NERDCommenterToggle
+    map <D-/> <Plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1
     let g:NERDAltDelims_python = 1
 " }}}
@@ -582,7 +585,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     let g:nerdtree_tabs_open_on_gui_startup=0
     " 打开当前文件的Tree
     map ,n <esc>:NERDTreeToggle<CR>
-    inoremap ,n :NERDTreeToggle<CR>
+    inoremap ,n<esc> :NERDTreeToggle<CR>
     " nerdtreetabs
     map <F1> :NERDTreeToggle<cr>
     inoremap <F1> <esc> :NERDTreeToggle<cr>
@@ -590,7 +593,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     inoremap <m-1> <esc> :NERDTreeToggle<cr>
     map <F2> :NERDTreeFind<cr>
     inoremap <F2> <esc> :NERDTreeFind<cr>
-    map <m-2> :NERDTreeFind<cr>
+    map <M-2> :NERDTreeFind<cr>
     inoremap <m-2> <esc> :NERDTreeFind<cr>
     map <Space>nn :NERDTreeToggle<cr>
     map <Space>nb :NERDTreeFromBookmark
@@ -614,6 +617,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " tagbar {{{
     nmap <F9> :TagbarToggle<CR>
     map <m-o> :TagbarToggle<CR>
+    map <D-o> :TagbarToggle<CR>
     let g:tagbar_autofocus = 1
     " let g:tagbar_autoshowtag = 1
     " let g:tagbar_show_visibility = 1

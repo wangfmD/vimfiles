@@ -45,7 +45,7 @@ if has("gui_running")
     " set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    au GUIEnter * simalt ~x
+    "    au GUIEnter * simalt ~x
 endif
 
 " Set utf8 as standard encoding and en_US as the standard language
@@ -53,7 +53,7 @@ set encoding=utf8
 
 " Set font according to system
 if has("mac") || has("macunix")
-    set gfn=Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
+    set gfn=Hack:h12,Source\ Code\ Pro:h12,monaco:h13
 elseif has("win16") || has("win32")
     " set gfn=Courier\ New\:h13,Source\ Code\ Pro:h12,
     set gfn=新宋体:h14:cGB2312:qDRAFT
