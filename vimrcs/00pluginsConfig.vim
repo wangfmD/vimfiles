@@ -661,7 +661,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " beta {{{
     " python code format
     " format all file
-    autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+    autocmd FileType python nnoremap <leader>1 :0,$!yapf<Cr>
     " format select block
     " autocmd FileType python vnoremap <leader>y :!yapf<Cr>
 

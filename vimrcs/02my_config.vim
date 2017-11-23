@@ -1,21 +1,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <C-F8> :so $MYVIMRC<CR>
-nmap <silent> <c-1> :so $MYVIMRC<CR>
+nmap <silent> <leader>ee :so $MYVIMRC<CR>
 
 nnoremap <silent> <Space>8 /def\s\\|class\s<CR>
 nnoremap <silent> <Space>9 /def <CR>
 map <space>s /
 nnoremap  <Space>e :NERDTree
 
-map <leader>1 :vs <CR>
-map <leader>2 :sp <CR>
-map <leader>3 <C-W>h
-map <leader>4 <C-W>l
-map <leader>0 <C-W>T
-" nnoremap <Space>1  <CR>
-" nnoremap <Space>2  <CR>
+map <leader>2 :vs <CR>
+map <leader>3 :sp <CR>
 nnoremap <D-s> :w <CR>
 nnoremap <D-v> "+P
 
@@ -23,6 +17,8 @@ nnoremap <D-v> "+P
 nmap <S-c> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
 nmap <m-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap kj <Esc>
+nnoremap <CR> G
+nnoremap <BS> gg
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
@@ -42,14 +38,11 @@ inoremap $3 {}<esc>i
 inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command mode related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Smart mappings on the command line
 cno $h e ~/
 cno $d e ~/Desktop/
 cno $j e ./
-"cno $c e <C-\>eCurrentFileDir("e")<cr>
 
 " ; split window open in new tab
 inoremap <c-e> <end>
@@ -66,12 +59,6 @@ noremap <c-cr> <esc>o<esc>
 inoremap <c-cr> <esc>o<esc>i
 nnoremap <leader>ww :set fenc=<cr>
 
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929 match OverLength /\%81v.\+/
-""""""""skilll"""""""
-" g;  g, 修改过的地方来回切换
-" `.  '. 最后修改的地方
-" ``      两次修改的地方切换
-" gg=G对齐
 
 " 上下左右键的行为 会显示其他信息
 inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
@@ -79,13 +66,6 @@ inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
 inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 
-" 关闭方向键, 强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-
-"Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
 nnoremap k gk
 nnoremap gk k
@@ -98,24 +78,23 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 
 
-" tab 操作
-" http://vim.wikia.com/wiki/Alternative_tab_navigation
-" http://stackoverflow.com/questions/2005214/switching-to-a-particular-tab-in-vim
-" tab切换
+" tab 操作 tab/buffer相关
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+" Close all the buffers
+map <leader>ba :bufdo bd<cr>
+nnoremap b[ :bprevious<cr>
+nnoremap b] :bnext<cr>
+
 map <leader>th :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map t] :tabnext<cr>
 map t[ :tabprev<cr>
-" map <right> :tabnext<cr>
-" map <left> :tabprev<cr>
-" map <leader>te :tabedit<cr>
-" Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext<cr>
-" Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>
 map <leader>cc :botright cope<cr>
@@ -148,9 +127,6 @@ nnoremap <C-S-Up> ddkP
 " Toggles between the active and last active tab "
 " The first tab is always 1 "
 let g:last_active_tab = 1
-" nnoremap <leader>gt :execute 'tabnext ' . g:last_active_tab<cr>
-" nnoremap <silent> <c-o> :execute 'tabnext ' . g:last_active_tab<cr>
-" vnoremap <silent> <c-o> :execute 'tabnext ' . g:last_active_tab<cr>
 nnoremap <silent> <leader>tt :execute 'tabnext ' . g:last_active_tab<cr>
 autocmd TabLeave * let g:last_active_tab = tabpagenr()
 
@@ -167,7 +143,6 @@ cnoremap <C-K>		<C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-" 搜索相关
 " 进入搜索Use sane regexes"
 nnoremap / /\v
 vnoremap / /\v
@@ -183,14 +158,6 @@ noremap <silent><leader><CR> :nohls<CR>
 nnoremap # *
 nnoremap * #
 
-" tab/buffer相关
-" 切换前后buffer
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-" Close all the buffers
-map <leader>ba :bufdo bd<cr>
-nnoremap b[ :bprevious<cr>
-nnoremap b] :bnext<cr>
 
 
 " 调整缩进后自动选中，方便再次操作
@@ -216,28 +183,21 @@ nnoremap <leader>v V`}
 " 滚动Speed up scrolling of the viewport slightly
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
-" Quickly close the current window
 nnoremap <leader>q :q<CR>
-" Quickly save the current file
 nnoremap <leader>w :w!<CR>
 " 交换 ' `, 使得可以快速使用'跳到marked位置
 nnoremap ' `
 nnoremap ` '
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
+
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-map <leader><F1> :cd %:p:h<cr>:pwd<cr>
-
 
 """""""""""""""""""""""""""""""""""""
 " 代码折叠自定义快捷键 <leader>zz
@@ -345,9 +305,6 @@ function! FindDef(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-nnoremap <CR> G
-nnoremap <BS> gg
-" autocmd VimEnter * NERDTree
 
 """"""""""""""OS CONF""""""""""""""""
 ""配置快捷键，进入常用目录
@@ -363,6 +320,9 @@ else
     map <Leader>eo :NERDTree /opt/github/<cr>
     map <Leader>ea :NERDTree /opt/autoTest_pro/<cr>
 endif
-"""""""""""""""""""""""""""""""""""""
-"end
-"""""""""""""""""""""""""""""""""""""
+
+""""""""skilll"""""""
+" g;  g, 修改过的地方来回切换
+" `.  '. 最后修改的地方
+" ``      两次修改的地方切换
+" gg=G对齐
