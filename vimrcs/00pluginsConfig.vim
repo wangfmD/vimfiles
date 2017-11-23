@@ -350,6 +350,7 @@ set cmdheight=2
 " ################### 快速编码 ###################
 " nerdcommenter {{{
     map <leader>m <Plug>NERDCommenterToggle
+    map <space>/ <Plug>NERDCommenterToggle
     map <m-/> <Plug>NERDCommenterToggle
     map <D-/> <Plug>NERDCommenterToggle
     let g:NERDSpaceDelims=1

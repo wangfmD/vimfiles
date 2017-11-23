@@ -8,8 +8,11 @@ nnoremap <silent> <Space>9 /def <CR>
 map <space>s /
 nnoremap  <Space>e :NERDTree
 
-map <leader>2 :vs <CR>
-map <leader>3 :sp <CR>
+map <space>2 :vs <CR>
+map <space>3 :sp <CR>
+map <space>1 <C-W><C-o>
+map <leader>2 <C-W>h
+map <leader>3 <C-W>l
 nnoremap <D-s> :w <CR>
 nnoremap <D-v> "+P
 
@@ -17,7 +20,7 @@ nnoremap <D-v> "+P
 nmap <S-c> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
 nmap <m-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap kj <Esc>
-nnoremap <CR> G
+" nnoremap <CR> G
 nnoremap <BS> gg
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
