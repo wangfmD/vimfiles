@@ -1,4 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <C-F8> :so $MYVIMRC<CR>
+nmap <silent> <c-1> :so $MYVIMRC<CR>
+
 nnoremap <silent> <Space>8 /def\s\\|class\s<CR>
 nnoremap <silent> <Space>9 /def <CR>
 map <space>s /
@@ -17,7 +22,6 @@ nnoremap <D-v> "+P
 """"""""copy current file path""""""""""""""""""
 nmap <S-c> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
 nmap <m-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
-" nmap <D-c> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap kj <Esc>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -221,10 +225,6 @@ nnoremap ' `
 nnoremap ` '
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <C-F9> :so $MYVIMRC<CR>
-nmap <silent> <leader>es :so $MYVIMRC<CR>
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""

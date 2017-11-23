@@ -422,7 +422,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ctrlp  ctrlpfunky{{{
-    let g:ctrlp_map = ',p'
+    let g:ctrlp_map = '<c-p>'
     let g:ctrlp_cmd = 'CtrlP'
     map ,f :CtrlPMRU<CR>
     map ,b :CtrlPBuffer<cr>
@@ -584,15 +584,11 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
     let g:nerdtree_tabs_open_on_console_startup=0
     let g:nerdtree_tabs_open_on_gui_startup=0
     " 打开当前文件的Tree
-    map ,n <esc>:NERDTreeToggle<CR>
-    inoremap ,n<esc> :NERDTreeToggle<CR>
+    map <c-x> :NERDTreeToggle<CR>
+    inoremap <c-x> <esc> :NERDTreeToggle<CR>
     " nerdtreetabs
-    map <F1> :NERDTreeToggle<cr>
-    inoremap <F1> <esc> :NERDTreeToggle<cr>
-    map <m-1> :NERDTreeToggle<cr>
-    inoremap <m-1> <esc> :NERDTreeToggle<cr>
-    map <F2> :NERDTreeFind<cr>
-    inoremap <F2> <esc> :NERDTreeFind<cr>
+    map <c-a> :NERDTreeFind<cr>
+    inoremap <c-a> <esc> :NERDTreeFind<cr>
     map <M-2> :NERDTreeFind<cr>
     inoremap <m-2> <esc> :NERDTreeFind<cr>
     map <Space>nn :NERDTreeToggle<cr>

@@ -43,7 +43,7 @@ set background=dark
 if has("gui_running")
     set guioptions-=T
     " set guioptions-=e
-    set t_Co=256
+    set t_Co=255
     set guitablabel=%M\ %t
     "    au GUIEnter * simalt ~x
 endif
