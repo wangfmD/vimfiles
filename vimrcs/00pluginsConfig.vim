@@ -262,6 +262,7 @@ set cmdheight=2
     " let g:jedi#goto_assignments_command = "<F3>"
     " let g:jedi#goto_definitions_command = ""
     let g:jedi#goto_definitions_command = "<F3>"
+    " let g:jedi#goto_definitions_command = "<C-]>"
     " let g:jedi#documentation_command = "K"
     " let g:jedi#usages_command = "<leader>n"
     " let g:jedi#completions_command = "<C-Space>"
@@ -289,6 +290,7 @@ set cmdheight=2
     nnoremap <F3> :YcmCompleter GoToDefinition<CR>
     nnoremap <m-k> :YcmCompleter GoToDefinitionElseDeclaration<CR>
     nnoremap <leader>k :YcmCompleter GoToDeclaration<CR>
+    " nnoremap <c-]> :YcmCompleter GoToDeclaration<CR>
     " 引入，可以补全系统，以及python的第三方包 针对新老版本YCM做了兼容
     " old version
     if !empty(glob("~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"))
@@ -612,7 +614,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
 " 标签导航
 " tagbar {{{
-    nmap <F9> :TagbarToggle<CR>
+    nmap <space>0 :TagbarToggle<CR>
     map <m-o> :TagbarToggle<CR>
     map <D-o> :TagbarToggle<CR>
     let g:tagbar_autofocus = 1

@@ -8,11 +8,11 @@ nnoremap <silent> <Space>9 /def <CR>
 map <space>s /
 nnoremap  <Space>e :NERDTree
 
-map <space>2 :vs <CR>
-map <space>3 :sp <CR>
+map <leader>2 :vs <CR>
+map <leader>3 :sp <CR>
 map <space>1 <C-W><C-o>
-map <leader>2 <C-W>h
-map <leader>3 <C-W>l
+map <space>2 <C-W>h
+map <space>3 <C-W>l
 nnoremap <D-s> :w <CR>
 nnoremap <D-v> "+P
 
@@ -20,7 +20,7 @@ nnoremap <D-v> "+P
 nmap <S-c> :let @+=expand("%:p")<cr>:echo "Copy the current filename is completed!"<cr>
 nmap <m-S-C> :let @+=expand("%:p:h")<cr>:echo "Copy the current path is completed!"<cr>
 inoremap kj <Esc>
-" nnoremap <CR> G
+nnoremap <CR> G
 nnoremap <BS> gg
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -46,6 +46,7 @@ inoremap $e ""<esc>i
 cno $h e ~/
 cno $d e ~/Desktop/
 cno $j e ./
+cno $r reg<cr>
 
 " ; split window open in new tab
 inoremap <c-e> <end>
@@ -93,6 +94,10 @@ map <leader>th :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map t] :tabnext<cr>
 map t[ :tabprev<cr>
+map tn :tabnew<cr>
+map tc :tabclose<cr>
+map tt :tabnext<cr>
+map tm :tabmove
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
@@ -113,6 +118,7 @@ map <M-6> 6gt
 map <M-7> 7gt
 map <M-8> 8gt
 map <M-9> 9gt
+map <d-0> 0gt
 map <d-1> 1gt
 map <d-2> 2gt
 map <d-3> 3gt
@@ -122,8 +128,8 @@ map <d-6> 6gt
 map <d-7> 7gt
 map <d-8> 8gt
 map <d-9> 9gt
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
+" nnoremap <C-t>     :tabnew<CR>          go-vim 冲突
+" inoremap <C-t>     <Esc>:tabnew<CR>     go-vim 冲突
 nnoremap <C-S-Down> ddp
 nnoremap <C-S-Up> ddkP
 
@@ -317,11 +323,11 @@ if has("win16") || has("win32")
     map <Leader>ee :e E:\<cr>
     map <Leader>ef :e F:\<cr>
     map <Leader>eg :e G:\<cr>
-    map <Leader>eo :NERDTree G:\03_gitHub_pro\github_wangfmD\notes<cr>
     map <Leader>ea :NERDTree D:\00_opt\autoTest_pro\<cr>
 else
     map <Leader>eo :NERDTree /opt/github/<cr>
     map <Leader>ea :NERDTree /opt/autoTest_pro/<cr>
+    map <Leader>er :NERDTree /opt/gopath/src/github.com/wangfmD/<cr>
 endif
 
 """"""""skilll"""""""
