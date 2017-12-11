@@ -351,7 +351,6 @@ set cmdheight=2
 " }}}
 " ################### 快速编码 ###################
 " nerdcommenter {{{
-    map <leader>m <Plug>NERDCommenterToggle
     map <space>/ <Plug>NERDCommenterToggle
     map <m-/> <Plug>NERDCommenterToggle
     map <D-/> <Plug>NERDCommenterToggle
@@ -362,8 +361,8 @@ set cmdheight=2
     map <leader><space> :FixWhitespace<cr>
 " }}}
 " easyalign {{{
-    vmap <Leader>a <Plug>(EasyAlign)
-    nmap <Leader>a <Plug>(EasyAlign)
+    vmap <Leader>m <Plug>(EasyAlign)
+    nmap <Leader>m <Plug>(EasyAlign)
     if !exists('g:easy_align_delimiters')
     let g:easy_align_delimiters = {}
     endif
@@ -427,8 +426,8 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " ctrlp  ctrlpfunky{{{
     let g:ctrlp_map = '<c-p>'
     let g:ctrlp_cmd = 'CtrlP'
-    map ,f :CtrlPMRU<CR>
-    map ,b :CtrlPBuffer<cr>
+    map <space>fr :CtrlPMRU<CR>
+    map <space>b :CtrlPBuffer<cr>
     let g:ctrlp_custom_ignore = {
         \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
         \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
@@ -449,8 +448,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 
     " ctrlpfunky
     " ctrlp插件1 - 不用ctag进行函数快速跳转
-    nnoremap <Space>f :CtrlPFunky<Cr>
-	nnoremap <m-[> :CtrlPFunky<Cr>
+    nnoremap <Space>ff :CtrlPFunky<Cr>
     " narrow the list down with a word under cursor
 	nnoremap <m-]> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
     let g:ctrlp_funky_syntax_highlight = 1
@@ -460,7 +458,7 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 " ctrlsf {{{
     let g:ctrlsf_ackprg = 'ag'    " 设置ctrlsf 使用ag
         nmap <Space>` <Plug>CtrlSFPrompt
-        nmap <Space>w <Plug>CtrlSFCwordPath
+        nmap <Space>fw <Plug>CtrlSFCwordPath
     " let g:ctrlsf_position = 'below'
     " let g:ctrlsf_winsize = '30%'
     let g:ctrlsf_auto_close = 0
